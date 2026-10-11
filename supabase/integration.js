@@ -668,6 +668,15 @@
     return result.replace('<h2>Admin panel</h2>', `<h2>Admin panel</h2><div class="card"><h3>Physical walk-in queue</h3><div class="row"><input id="walk-in-count" type="number" min="0" max="10000" value="${S.queue?.walk_in_count || 0}" style="max-width:120px"><button class="btn s" onclick="updateWalkInQueue()">Update live count</button><span class="mu">${S.queue?.active_preorders || 0} active pre-orders</span></div></div>`);
   };
 
+  window.staffPreview = () => {
+    window.location.hash = '#/staff';
+    return '<div class="card">Opening the protected staff portal…</div>';
+  };
+  window.adminPreview = () => {
+    window.location.hash = '#/admin';
+    return '<div class="card">Opening the protected admin portal…</div>';
+  };
+
   async function initialize() {
     if (!config || !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(config.url || '') ||
         !/^sb_publishable_[A-Za-z0-9_-]+$/.test(config.publishableKey || '') ||
